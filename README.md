@@ -24,6 +24,7 @@ for certain content to be added to the database.
 First of all, make sure to tell about this project to everyone who may be interested.
 
 And here's about the workflow itself:
+
 1. Fork the repository.
 2. Use a branch named after the artist (all lowercase, dashes-instead-of-spaces).
 3. Make a PR.
