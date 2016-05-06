@@ -37,9 +37,9 @@ Alternatively, you could open an issue if it's only one song or a fix.
 ```
 A
 B
- /Band's Name
+ /Artist Name
              /Album Title
-                         /Name of a Song
+                         /Song Name
 C
 ...
 X
