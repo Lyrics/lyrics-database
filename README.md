@@ -21,25 +21,23 @@ for certain content to be added to the database.
 
 ### Okay, so you want to contribute
 
-First of all, make sure to tell about this project to everyone who may be interested.
-
-And here's about the workflow itself:
+Here's how:
 
 1. Fork the repository.
-2. Use a branch named after the artist (all lowercase, dashes-instead-of-spaces).
+2. Add files following the structure (see below).
 3. Make a PR.
 4. Wait for some good karma.
 
-Alternatively, you could open an issue if it's only one song or a fix.
+Alternatively, you could open an issue if it's a song request or just a fix.
 
 ### The database structure:
 
 ```
 A
-B
  /Artist Name
              /Album Title
                          /Song Name
+B
 C
 ...
 X
@@ -50,5 +48,5 @@ Z
 
 ### Legal
 
-All rights to the lyrics presented in this git repository belong to the
+All rights to the lyrics taken from official sources presented in this git repository belong to the
 respective authors and/or legal owners of those songs.
