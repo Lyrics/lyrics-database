@@ -49,4 +49,4 @@ Z
 ### Legal
 
 All rights to the lyrics taken from official sources presented in this git repository belong to the
-respective authors and/or legal owners of those songs.
+respective authors and/or legal owners of those texts.
