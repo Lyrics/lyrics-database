@@ -2,7 +2,8 @@
 
 BASEDIR=$(dirname "$0")
 
-set 's/&#xDF;/ß/g' \
+set 's/\s*$//g' \
+    's/&#xDF;/ß/g' \
     's/&#xFC;/ü/g' \
     's/&#xA0;/\x20/g' \
     's/&#xF6;/ö/g' \
@@ -15,8 +16,7 @@ set 's/&#xDF;/ß/g' \
     's/&#xDC;/Ü/g' \
     's/&#x2026/.../g' \
     's/&#xB4;/\x27/g' \
-    's/&#x2019;/\x27/g' \
-    's/[ \t]*$//'
+    's/&#x2019;/\x27/g'
 
 for i do
         echo $i
