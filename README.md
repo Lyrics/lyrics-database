@@ -20,8 +20,7 @@ Currently we're trying to accumulate as many lyrics as no other publicly availab
 ### This project is a waste of time, nothing's going to work.
 Negative thinking won't get you anywhere in life. The big advantage of this project is that you can save the whole database to your disk in two clicks, when other websites can go offline at any time with all their lyrics becoming inacaessible to the public. This makes every contribution to this repository a solid and permanent improvement for the Internet as a whole.
 ### Other websites will just take lyrics from here and never thank you for your hard work.
-Will speak for myself and say that working on this one never feels like work. I can also guarantee that both fans and artists who will ever contribute to this database would do so as a gesture of good will. The goal is to improve the quality of the lyrics on the Internet.  
-We'd be happy to know that other websites are sourcing lyrics from this database as long as they retain the artists' credits.
+Will speak for myself and say that working on this one never feels like work. I can also guarantee that both fans and artists who will ever contribute to this database would do so as a gesture of good will. The goal is to improve the quality of the lyrics on the Internet. We'd be happy to know that other websites are sourcing lyrics from this database as long as they retain the artists' credits.
 ### Are you planning to have a web interface for this database at some point?
 Yes. As a matter of fact, we already [do](https://lyrics.github.io). No ads, no ugly miniscule pixelated fonts,
 no clipboard injections, no malware or heart-breaking censorship. It's currently just a prototype and is rather crude. Meanwhile, GitHub itself serves as a good search platform for the database. Cloning the repository to your filesystem and browsing it the old-fashioned way is another option.
