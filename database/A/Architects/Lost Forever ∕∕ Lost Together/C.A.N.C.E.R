@@ -3,7 +3,7 @@ There's a ruthlessness in all that you do
 This is not about what we deserve
 There's no bias in the misery served
 
-C.A.N.C.E.R.
+C.A.N.C.E.R
 
 So watch the sun sink into the sea
 There is a perfect peace but don't wait up for me
@@ -21,7 +21,7 @@ A symbol of man brought to his knees
 This is not about what we deserve
 There's no bias in the misery served
 
-C.A.N.C.E.R.
+C.A.N.C.E.R
 
 Find a little light and hold it close
 Don't lose sight of what matters most
@@ -39,8 +39,8 @@ There will be no fight in broken bliss
 So watch the sun sink into the sea
 There is a perfect peace but don't wait up for me
 
-C.A.N.C.E.R.
-C.A.N.C.E.R.
+C.A.N.C.E.R
+C.A.N.C.E.R
 
 This is a burden we all carry together
 Waiting in the wings, so we never say never
