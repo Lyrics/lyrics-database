@@ -1,7 +1,10 @@
 # Lyrics
+
 Here you can read and contribute lyrics to your favorite songs.
 
-# Q&A
+
+## Q&A
+
 ### So this is yet another lyrics website?
 Not really. Think of it as a fansourced tribute to music with words.  
 Nothing but lyrics submitted by you and other github users, all in one place, free to access by anyone, at any time.  
@@ -43,9 +46,13 @@ Please feel free to fork, add to, correct, suggest a feature or make a request f
 ### Do you censor things in here?
 No.
 
-# References
+
+## References
+
  * [Instructions for contributing](https://github.com/Lyrics/lyrics/wiki/Contributing)
 
-# Legal
+
+## Legal
+
 All copyrights and credits to lyrics taken from official sources belong to their
 respective authors and legal owners.
