@@ -19,12 +19,27 @@ AT_KEYWORDS([dir structure])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -mindepth 4 -type d], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([no triple dots within text])
+AT_SETUP([no triple dots within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep '\.\.\.' -r $ROOT_DIR], [0], [], [])
+AT_CHECK_UNQUOTED([grep '\.\.\.' -r $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([no chorus within text])
+AT_SETUP([no chorus within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep 'Chorus' -r $ROOT_DIR], [0], [], [])
+AT_CHECK_UNQUOTED([grep 'Chorus' -r $ROOT_DIR], [1], [], [])
+AT_CLEANUP
+
+AT_SETUP([no URLs within texts])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep "http" -ir $ROOT_DIR], [1], [], [])
+AT_CLEANUP
+
+AT_SETUP([no invalid unicode characters within texts])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep -axvr ".*" $ROOT_DIR], [1], [], [])
+AT_CLEANUP
+
+AT_SETUP([no Windows-style EOLs within texts])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep -nr $(printf '\r') $ROOT_DIR], [1], [], [])
 AT_CLEANUP
