@@ -1,0 +1,30 @@
+m4_define([AT_PACKAGE_BUGREPORT], [open.lyrics.database@gmail.com])
+m4_define([AT_PACKAGE_STRING], [lyrics])
+AT_INIT
+AT_COLOR_TESTS
+AT_BANNER([Lyrics validation])
+
+AT_SETUP([no filename extensions])
+AT_KEYWORDS([filenames])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -name "*.txt"], [0], [], [])
+AT_CLEANUP
+
+AT_SETUP([no files in upper level dirs])
+AT_KEYWORDS([dir structure])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -maxdepth 3 -type f], [0], [], [])
+AT_CLEANUP
+
+AT_SETUP([no directories in album dirs])
+AT_KEYWORDS([dir structure])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -mindepth 4 -type d], [0], [], [])
+AT_CLEANUP
+
+AT_SETUP([no triple dots within text])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep '\.\.\.' -r $ROOT_DIR], [0], [], [])
+AT_CLEANUP
+
+AT_SETUP([no chorus within text])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep 'Chorus' -r $ROOT_DIR], [0], [], [])
+AT_CLEANUP
