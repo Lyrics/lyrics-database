@@ -4,42 +4,52 @@ AT_INIT
 AT_COLOR_TESTS
 AT_BANNER([Lyrics validation])
 
-AT_SETUP([no filename extensions])
+AT_SETUP([for no filename extensions])
 AT_KEYWORDS([filenames])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -name "*.txt"], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([no files in upper level dirs])
+AT_SETUP([for no files in upper level dirs])
 AT_KEYWORDS([dir structure])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -maxdepth 3 -type f], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([no directories in album dirs])
+AT_SETUP([for no directories in album dirs])
 AT_KEYWORDS([dir structure])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -mindepth 4 -type d], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([no triple dots within texts])
+AT_SETUP([for no triple dots within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep '\.\.\.' -r $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([no chorus within texts])
+AT_SETUP([for no chorus within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep 'Chorus' -r $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([no URLs within texts])
+AT_SETUP([for no URLs within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "http" -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([no invalid unicode characters within texts])
+AT_SETUP([for no invalid unicode characters within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep -axvr ".*" $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -exec iconv -f utf-8 -t utf-8 --verbose {} > /dev/null +], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([no Windows-style EOLs within texts])
+AT_SETUP([for no Windows-style EOLs within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep -nr $(printf '\r') $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep -nrP '\r' $ROOT_DIR], [1], [], [])
+AT_CLEANUP
+
+AT_SETUP([for no empty files])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -empty], [1], [], [])
+AT_CLEANUP
+
+AT_SETUP([for no empty directories])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type d -empty], [1], [], [])
 AT_CLEANUP
