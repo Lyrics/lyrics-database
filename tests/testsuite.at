@@ -36,7 +36,7 @@ AT_CLEANUP
 
 AT_SETUP([for no invalid unicode characters within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -exec iconv -f utf-8 -t utf-8 --verbose {} > /dev/null +], [0], [], [])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -exec iconv -f utf-8 -t utf-8 -o /dev/null {} \;], [], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no Windows-style EOLs within texts])
