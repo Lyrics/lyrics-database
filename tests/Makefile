@@ -1,12 +1,12 @@
 .PHONY: all run clean
 
-all: testsuite run
+all: database-tests run
 
-testsuite:
-	autom4te --language=autotest -o testsuite testsuite.at
+database-tests:
+	autom4te --language=autotest -o database-tests database-tests.at
 
 run:
-	./testsuite ROOT_DIR=${PWD}/../database/
+	./database-tests ROOT_DIR=${PWD}/../database/
 
 clean:
-	rm -rf testsuite testsuite.log testsuite.dir
+	rm -rf database-tests database-tests.log database-tests.dir
