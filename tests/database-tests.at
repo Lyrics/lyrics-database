@@ -26,7 +26,7 @@ AT_CLEANUP
 
 AT_SETUP([for no chorus within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep 'Chorus' -r $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep 'chorus\:' -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no URLs within texts])
@@ -59,7 +59,7 @@ AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "©" -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([for no spaces at end of newline])
+AT_SETUP([for no spaces at end of line])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "[[[:blank:]]]$" -rl $ROOT_DIR], [1], [], [])
 AT_CLEANUP
