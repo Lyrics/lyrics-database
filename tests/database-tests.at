@@ -44,14 +44,9 @@ AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep -nrP '\r' $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
-AT_SETUP([for no empty files])
+AT_SETUP([for no empty files or directories])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -empty], [1], [], [])
-AT_CLEANUP
-
-AT_SETUP([for no empty directories])
-AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type d -empty], [1], [], [])
+AT_CHECK_UNQUOTED([IFS=$''; result=$(find $ROOT_DIR -empty); if [[[ ${result} != "" ]]]; then echo ${result} && exit 1; fi], [0], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no copyright sign within texts])
