@@ -19,11 +19,6 @@ AT_KEYWORDS([dir structure])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -mindepth 4 -type d], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([for no triple dots within texts])
-AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep '\.\.\.' -r $ROOT_DIR], [1], [], [])
-AT_CLEANUP
-
 AT_SETUP([for no chorus within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep -e '(chorus)' -e 'chorus\:' -e '[\[chorus\]]' -ir $ROOT_DIR], [1], [], [])
