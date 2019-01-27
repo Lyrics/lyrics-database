@@ -41,12 +41,12 @@ AT_CLEANUP
 
 AT_SETUP([for no empty files])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -empty], [1], [], [])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -empty], [0], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no empty directories])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type d -empty], [1], [], [])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -type d -empty], [0], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no copyright sign within texts])
