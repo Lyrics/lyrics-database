@@ -58,3 +58,8 @@ AT_SETUP([for no spaces at end of line])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "[[[:blank:]]]$" -rl $ROOT_DIR], [1], [], [])
 AT_CLEANUP
+
+AT_SETUP([for no trailing whitespaces in file/dir names])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -regex ".* "], [0], [], [])
+AT_CLEANUP
