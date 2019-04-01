@@ -44,3 +44,8 @@ C.A.N.C.E.R
 
 This is a burden we all carry together
 Waiting in the wings, so we never say never
+
+_________________
+Name  C.A.N.C.E.R
+Artist  Architects
+Album  Lost Forever ∕∕ Lost Together
