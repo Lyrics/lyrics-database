@@ -31,12 +31,12 @@ AT_CLEANUP
 
 AT_SETUP([for no invalid unicode characters within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -exec iconv -f utf-8 -t utf-8 -o /dev/null {} \;], [], [], [])
+AT_CHECK_UNQUOTED([grep -raxv '.*' $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no Windows-style EOLs within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep -nrP '\r' $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep -rU $'\x0D' $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
 AT_SETUP([for no empty files])
