@@ -68,3 +68,8 @@ AT_SETUP([for metadata to be present])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "Name  " -rL $ROOT_DIR], [0], [], [])
 AT_CLEANUP
+
+AT_SETUP([for no unusual quotation marks])
+AT_KEYWORDS([text content])
+AT_CHECK_UNQUOTED([grep -e "[\`‘“”]" -r $ROOT_DIR], [1], [], [])
+AT_CLEANUP
