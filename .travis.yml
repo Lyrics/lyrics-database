@@ -1,0 +1,10 @@
+language: minimal
+
+os:
+  - linux
+  - osx
+
+script: "cd tests && make"
+
+notifications:
+    email: false
