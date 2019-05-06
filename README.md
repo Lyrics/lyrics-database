@@ -22,7 +22,9 @@ Here you can read and contribute lyrics to your favorite songs.
 
 ## Legal
 
-All rights to original texts within this database belong to their respective authors and legal owners. If you believe that your work has been copied in a way that constitutes copyright infringement, or that your intellectual property rights have been otherwise violated, you should notify this project's maintainers of your infringement claim in accordance with the procedure below.
+Materials provided here are intended for non-commercial educational use. By accessing the documents here you agree that these materials are for private, educational use only. Materials here are protected by copyright and are the property of their respective owners.
+
+If you believe that your work has been copied in a way that constitutes copyright infringement, or that your intellectual property rights have been otherwise violated, you should notify this project's maintainers of your infringement claim in accordance with the procedure below.
 
 Maintainers of this project will process and investigate notices of alleged infringement and will take appropriate actions under the Digital Millennium Copyright Act ("DMCA") and other applicable intellectual property laws with respect to any alleged or actual infringement and take measures to prevent similar infringements from happening in the future. A notification of claimed copyright infringement should be emailed to open.lyrics.database@gmail.com (Subject line: "DMCA Takedown Request").
 
