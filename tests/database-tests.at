@@ -4,72 +4,86 @@ AT_INIT
 AT_COLOR_TESTS
 AT_BANNER([Lyrics validation])
 
+# 1
 AT_SETUP([for no filename extensions])
 AT_KEYWORDS([filenames])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -name "*.txt"], [0], [], [])
 AT_CLEANUP
 
+# 2
 AT_SETUP([for no files in upper level dirs])
 AT_KEYWORDS([dir structure])
-AT_CHECK_UNQUOTED([find $ROOT_DIR -maxdepth 3 -type f], [0], [], [])
+AT_CHECK_UNQUOTED([find $ROOT_DIR -maxdepth 3 -type f ! -name .DS_Store], [0], [], [])
 AT_CLEANUP
 
+# 3
 AT_SETUP([for no directories in album dirs])
 AT_KEYWORDS([dir structure])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -mindepth 4 -type d], [0], [], [])
 AT_CLEANUP
 
-AT_SETUP([for no chorus within texts])
+# 4
+AT_SETUP([for no annotations within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep -e '(chorus)' -e 'chorus\:' -e '[\[chorus\]]' -ir $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep -e '(chorus)' -e 'chorus\:' -e '[\[chorus\]]' -e '(verse)' -e 'verse\:' -e '[\[verse\]]' -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 5
 AT_SETUP([for no URLs within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep "http" -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 6
 AT_SETUP([for no invalid unicode characters within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep -raxv '.*' $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 7
 AT_SETUP([for no Windows-style EOLs within texts])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([grep -rU $'\x0D' $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 8
 AT_SETUP([for no empty files])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -type f -empty], [0], [], [])
 AT_CLEANUP
 
+# 9
 AT_SETUP([for no empty directories])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -type d -empty], [0], [], [])
 AT_CLEANUP
 
+# 10
 AT_SETUP([for no copyright sign within texts])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep "©" -ir $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep --exclude=.DS_Store "©" -ir $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 11
 AT_SETUP([for no spaces at end of line])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep "[[[:blank:]]]$" -rl $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep --exclude=.DS_Store "[[[:blank:]]]$" -rl $ROOT_DIR], [1], [], [])
 AT_CLEANUP
 
+# 12
 AT_SETUP([for no trailing whitespaces in file/dir names])
 AT_KEYWORDS([text content])
 AT_CHECK_UNQUOTED([find $ROOT_DIR -regex ".* "], [0], [], [])
 AT_CLEANUP
 
+# 13
 AT_SETUP([for metadata to be present])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep "Name  " -rL $ROOT_DIR], [0], [], [])
+AT_CHECK_UNQUOTED([grep --exclude=.DS_Store "Name  " -rL $ROOT_DIR], [0], [], [])
 AT_CLEANUP
 
+# 14
 AT_SETUP([for no unusual quotation marks])
 AT_KEYWORDS([text content])
-AT_CHECK_UNQUOTED([grep -e "[\`‘“”]" -r $ROOT_DIR], [1], [], [])
+AT_CHECK_UNQUOTED([grep --exclude=.DS_Store -e "[\`‘“”]" -r $ROOT_DIR], [1], [], [])
 AT_CLEANUP
