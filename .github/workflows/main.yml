@@ -20,8 +20,10 @@ jobs:
 
     - name: Clone lyrics.github.io.git
       env:
-        GITHUB_DEPLOY_TOKEN: ${{ secrets.GITHUB_DEPLOY_TOKEN }}
-      run: git clone https://${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
+        GITHUB_DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+      run: |
+        echo 'git clone https://${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git' > git-clone.sh
+        sh git-clone.sh
 
     - name: Generate website files
       run: |
