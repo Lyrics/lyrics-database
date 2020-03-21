@@ -15,12 +15,12 @@ jobs:
       run: mkdir lyrics.git && mv database lyrics.git
 
     - name: Clone lyrics-website-generator.git
-      run: git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Lyrics/lyrics-website-generator.git lyrics-website-generator.git
+      run: git clone https://${GITHUB_TOKEN}@github.com/Lyrics/lyrics-website-generator.git lyrics-website-generator.git
 
     - name: Clone lyrics.github.io.git
       env:
-        DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-      run: git clone https://x-access-token:${DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
+        GITHUB_DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+      run: git clone https://${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
 
     - name: Generate website files
       run: |
@@ -32,7 +32,7 @@ jobs:
     - name: Overwrite and deploy website files
       run: |
         cd lyrics.github.io.git
-        git config user.name "lyrics-admin"
+        git config user.name "Lyrics Admin"
         git config user.email "open.lyrics.database@gmail.com"
         make clean
         mv ../lyrics-website-generator.git/www/* .
