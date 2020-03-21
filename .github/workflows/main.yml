@@ -24,4 +24,10 @@ jobs:
       run: cd lyrics-website-generator.git && sudo apt-get install python3-setuptools sassc && pip3 install pystache && make
 
     - name: Overwrite and deploy website files
-      run: cd lyrics.github.io.git && make clean && mv ../lyrics-website-generator.git/www/* . && make deploy
+      run: |
+        cd lyrics.github.io.git
+        git config user.email "open.lyrics.databasn@gmail.com"
+        git config user.name "lyrics-admin"
+        make clean
+        mv ../lyrics-website-generator.git/www/* .
+        make deploy
