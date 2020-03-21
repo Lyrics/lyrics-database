@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Build & Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +20,7 @@ jobs:
 
     - name: Clone lyrics.github.io.git
       env:
-        GITHUB_DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        GITHUB_DEPLOY_TOKEN: ${{ secrets.GITHUB_DEPLOY_TOKEN }}
       run: git clone https://${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
 
     - name: Generate website files
