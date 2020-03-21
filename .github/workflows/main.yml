@@ -28,6 +28,7 @@ jobs:
         cd lyrics.github.io.git
         git config user.email "open.lyrics.databasn@gmail.com"
         git config user.name "lyrics-admin"
+        git remote set-url origin https://x-access-token:${DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git
         make clean
         mv ../lyrics-website-generator.git/www/* .
         make deploy
