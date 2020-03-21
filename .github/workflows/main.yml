@@ -15,7 +15,7 @@ jobs:
       run: mkdir lyrics.git && mv database lyrics.git
 
     - name: Clone lyrics-website-generator.git
-      run: git clone git@github.com:Lyrics/lyrics-website-generator.git lyrics-website-generator.git
+      run: git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Lyrics/lyrics-website-generator.git lyrics-website-generator.git
 
     - name: Clone lyrics.github.io.git
       run: git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
