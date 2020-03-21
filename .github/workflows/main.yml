@@ -16,12 +16,12 @@ jobs:
       run: mkdir lyrics.git && mv database lyrics.git
 
     - name: Clone lyrics-website-generator.git
-      run: git clone "https://lyrics-admin:${GITHUB_TOKEN}@github.com/Lyrics/lyrics-website-generator.git lyrics-website-generator.git"
+      run: git clone "https://lyrics-admin:${GITHUB_TOKEN}@github.com/Lyrics/lyrics-website-generator.git" lyrics-website-generator.git
 
     - name: Clone lyrics.github.io.git
       env:
         GITHUB_DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-      run: git clone "https://lyrics-admin:${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git"
+      run: git clone "https://lyrics-admin:${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git" lyrics.github.io.git
 
     - name: Generate website files
       run: |
