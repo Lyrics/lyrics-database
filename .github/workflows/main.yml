@@ -21,7 +21,7 @@ jobs:
       run: git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Lyrics/lyrics.github.io.git lyrics.github.io.git
 
     - name: Generate static website files
-      run: cd lyrics-website-generator.git && sudo apt-get install python3-setuptools && pip3 install pystache && make
+      run: cd lyrics-website-generator.git && sudo apt-get install python3-setuptools sassc && pip3 install pystache && make
 
     - name: Overwrite and deploy website files
       run: cd lyrics.github.io.git && make clean && mv ../lyrics-website-generator.git/www/* . && make deploy
