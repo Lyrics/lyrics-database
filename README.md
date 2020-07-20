@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/Lyrics/lyrics.svg?branch=master)](https://travis-ci.com/Lyrics/lyrics)
 
-Here you can read and contribute lyrics to your favorite songs.
+Here you can read and add song lyrics.
 
 
 ### What this project is contributing to the world
