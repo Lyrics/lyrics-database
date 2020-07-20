@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - run: git config --global core.autocrlf false
+    - uses: actions/checkout@v2
+    - name: Run Tests 
+      run: cd tests && make
