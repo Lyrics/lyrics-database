@@ -1,4 +1,4 @@
-name: Update GitHub Pages
+name: CD
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build & Deploy
+    name: Build & Deploy Website
     runs-on: ubuntu-latest
 
     steps:
