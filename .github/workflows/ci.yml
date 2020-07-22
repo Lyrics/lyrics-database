@@ -18,8 +18,6 @@ jobs:
     steps:
     - run: git config --global core.autocrlf false
     - uses: actions/checkout@v2
-    - name: Install dependencies for running tests on Windows
-      if: matrix.os == 'windows-latest'
-      run: choco install cygwin && C:\\tools\\cygwin\\cygwinsetup.exe -q -P autoconf
     - name: Run Tests
+      if: matrix.os != 'windows-latest'
       run: cd tests && make
