@@ -1,7 +1,5 @@
 # Lyrics
 
-[![Build Status](https://travis-ci.com/Lyrics/lyrics.svg?branch=master)](https://travis-ci.com/Lyrics/lyrics)
-
 Here you can read and add song lyrics.
 
 
