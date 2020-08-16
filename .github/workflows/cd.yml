@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build & Deploy Website
+    name: Build & deploy website to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
@@ -24,11 +24,7 @@ jobs:
       run: git clone "https://lyrics-admin:${GITHUB_DEPLOY_TOKEN}@github.com/Lyrics/lyrics.github.io.git" lyrics.github.io.git
 
     - name: Generate website files
-      run: |
-        cd lyrics-website-generator.git
-        sudo apt-get install python3-setuptools sassc
-        pip3 install pystache
-        make
+      run: cd lyrics-website-generator.git && sudo apt-get install python3-setuptools sassc && pip3 install pystache && make
 
     - name: Overwrite and deploy website files
       run: |
