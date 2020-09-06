@@ -8,12 +8,15 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
-def formatTestName(fileName):
+def formatTestModuleName(fileName):
   result = re.match(r'\d+-(.*).py', fileName)
   name = result[1]
   name = name.replace('-', ' ')
   name = name.capitalize()
   return name
+
+def formatTestName(functionName):
+  return re.sub(r'(?<!^)(?=[A-Z])', ' ', functionName).lower().capitalize()
 
 # Load test modules
 testModules = {}
@@ -23,7 +26,7 @@ for moduleFilename in sorted(os.listdir(testModulesDirectory), key=str.lower):
     spec = importlib.util.spec_from_file_location(moduleFilename, os.path.join(testModulesDirectory, moduleFilename))
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    testName = formatTestName(moduleFilename)
+    testName = formatTestModuleName(moduleFilename)
     testModules[testName] = {}
     for testAttrName in module.__dict__.keys():
       if testAttrName.startswith('test'):
@@ -78,10 +81,11 @@ for testModuleFilename in testModules:
       if ret > tret:
         tret = ret
       # TODO: log this into a file
+    readableTestName = formatTestName(testName)
     if ret == CODE_ERR:
-      print('[ERROR]', testName)
+      print('[ERROR]', readableTestName)
       break
     elif ret == CODE_WARN:
-      print('[WARNING]', testName)
+      print('[WARNING]', readableTestName)
     else:
-      print('[OK]', testName)
+      print('[OK]', readableTestName)

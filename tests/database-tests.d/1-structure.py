@@ -2,7 +2,7 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
-def testForPathAlwaysHaveFourParts(path, bytes, contents, text, metadata):
+def testForPathToAlwaysHaveFourParts(path, bytes, contents, text, metadata):
   if len(path.split('/')) != 4:
     return CODE_ERR
   return CODE_OK
@@ -20,9 +20,9 @@ def testForNoSpacesInFileDirNames(path, bytes, contents, text, metadata):
   return CODE_OK
 
 def testForTests(*_):
-  def testTestForPathAlwaysHaveFourParts():
-    passing = testForPathAlwaysHaveFourParts('A/Artist/Album/Recording', b'', '', '', {}) == CODE_OK 
-    failing = testForPathAlwaysHaveFourParts('A/Artist/Recording', b'', '', '', {}) == CODE_ERR
+  def testTestForPathToAlwaysHaveFourParts():
+    passing = testForPathToAlwaysHaveFourParts('A/Artist/Album/Recording', b'', '', '', {}) == CODE_OK
+    failing = testForPathToAlwaysHaveFourParts('A/Artist/Recording', b'', '', '', {}) == CODE_ERR
     return passing and failing
 
   def testTestForNoFilenameExtensions():
@@ -35,7 +35,7 @@ def testForTests(*_):
     failing = testForNoSpacesInFileDirNames(' A / Artist / Album / Recording.txt ', b'', '', '', {}) == CODE_ERR
     return passing and failing
 
-  if not testTestForPathAlwaysHaveFourParts():
+  if not testTestForPathToAlwaysHaveFourParts():
     return CODE_ERR
   if not testTestForNoFilenameExtensions():
     return CODE_ERR
