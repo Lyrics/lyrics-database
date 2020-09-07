@@ -23,15 +23,15 @@ def testForProperEllipses(path, bytes, contents, text, metadata):
 
 def testTheTests(*_):
   def testTheTestForNoSpacesAroundLines():
-    passing = testForNoSpacesAroundLines('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK 
+    passing = testForNoSpacesAroundLines('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK
     failing = testForNoSpacesAroundLines('', b'', '', 'La la \n La \nLa ', {}) == CODE_ERR
     return passing and failing
   def testTheTestForSmartQuotes():
-    passing = testForSmartQuotes('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK 
+    passing = testForSmartQuotes('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK
     failing = testForSmartQuotes('', b'', '', "\"It's such a beautiful day\", she said", {}) == CODE_WARN
     return passing and failing
   def testTheTestForProperEllipses():
-    passing = testForProperEllipses('', b'', '', 'La la la\nLa la\nLa…\n', {}) == CODE_OK 
+    passing = testForProperEllipses('', b'', '', 'La la la\nLa la\nLa…\n', {}) == CODE_OK
     failing = testForProperEllipses('', b'', '', 'She said..\n', {}) == CODE_WARN
     return passing and failing
   if not testTheTestForNoSpacesAroundLines() \
