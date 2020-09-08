@@ -23,7 +23,7 @@ def formatTestName(functionName):
   return re.sub(r'(?<!^)(?=[A-Z])', ' ', functionName).lower().capitalize()
 
 def formatStatLine(key, value):
-  return '{:⸱<53}{}'.format(key, value)
+  return '{:·<53}{}'.format(key, value)
 
 def splitLyricsIntoTextAndMetadata(lyricsFileContents):
   return re.split('_+', lyricsFileContents)
