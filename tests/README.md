@@ -1,8 +1,14 @@
-# Tests for Lyrics
+# Tests for Open Lyrics Database
 
-Automated tests for ensuring the integrity of the database
+Automated tests for validating integrity
 
 
-## How to perform the tests
+## How to run tests
 
     make
+
+or
+
+    make 2> /dev/null
+
+to suppress STDERR (reduces verbosity)
