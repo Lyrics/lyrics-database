@@ -16,6 +16,11 @@ def testForSmartQuotes(path, bytes, contents, text, metadata):
       return CODE_WARN
   return CODE_OK
 
+def testForNoWideGaps(path, bytes, contents, text, metadata):
+  if '\n\n\n' in text:
+    return CODE_WARN
+  return CODE_OK
+
 def testForProperEllipses(path, bytes, contents, text, metadata):
   if '..' in text:
     return CODE_WARN
@@ -30,12 +35,17 @@ def testTheTests(*_):
     passing = testForSmartQuotes('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK
     failing = testForSmartQuotes('', b'', '', "\"It's such a beautiful day\", she said", {}) == CODE_WARN
     return passing and failing
+  def testTheTestForNoWideGaps():
+    passing = testForNoWideGaps('', b'', '', 'La la la\n\nLa la\n\nLa\n', {}) == CODE_OK
+    failing = testForNoWideGaps('', b'', '', "\"La la la\n\n\nLa la\"", {}) == CODE_WARN
+    return passing and failing
   def testTheTestForProperEllipses():
     passing = testForProperEllipses('', b'', '', 'La la la\nLa la\nLa…\n', {}) == CODE_OK
     failing = testForProperEllipses('', b'', '', 'She said..\n', {}) == CODE_WARN
     return passing and failing
   if not testTheTestForNoSpacesAroundLines() \
   or not testTheTestForSmartQuotes() \
+  or not testTheTestForNoWideGaps() \
   or not testTheTestForProperEllipses():
     return CODE_ERR
   return CODE_OK
