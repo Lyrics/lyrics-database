@@ -12,6 +12,12 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
+class colors:
+  SUCCESS = '\033[92m'
+  WARNING = '\033[93m'
+  ERROR = '\033[91m'
+  RESET_ALL = '\033[0m'
+
 def formatTestModuleName(fileName):
   result = re.match(r'\d+-(.*).py', fileName)
   name = result[1]
@@ -69,6 +75,30 @@ def parseMetadata(metadata):
     valuepartials = re.split(',\s{2,}', rawvalue)
     dictionary[key] = valuepartials
   return dictionary
+
+def supports_colors():
+    supported_platform = sys.platform != 'win32' or 'ANSICON' in os.environ
+    is_a_tty = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+    return supported_platform and is_a_tty
+
+def formatTestStatusLabel(code):
+  result = '['
+  if code == CODE_OK:
+    if supports_colors():
+      result += colors.SUCCESS
+    result += 'OK'
+  elif code == CODE_WARN:
+    if supports_colors():
+      result += colors.WARNING
+    result += 'WARN'
+  elif code == CODE_ERR:
+    if supports_colors():
+      result += colors.ERROR
+    result += 'ERR'
+  if supports_colors():
+    result += colors.RESET_ALL
+  result += ']'
+  return result
 
 # Mark test script start time
 startTime = time.process_time()
@@ -168,12 +198,12 @@ for testModuleFilename in testModules:
         if res > testres:
           testres = res
     if testres == CODE_ERR:
-      print('[ERR]', readableTestName)
+      print(formatTestStatusLabel(CODE_ERR), readableTestName)
       # continue # No need to continue with this test after first error
     elif testres == CODE_WARN:
-      print('[WARN]', readableTestName)
+      print(formatTestStatusLabel(CODE_WARN), readableTestName)
     else:
-      print('[OK]', readableTestName)
+      print(formatTestStatusLabel(CODE_OK), readableTestName)
   # Separate output of test modules with a single newline
   print()
 
