@@ -21,6 +21,11 @@ def testForProperEllipses(path, bytes, contents, text, metadata):
     return CODE_WARN
   return CODE_OK
 
+def testForNoMinuses(path, bytes, contents, text, metadata):
+  if '-' in text:
+    return CODE_WARN
+  return CODE_OK
+
 def testTheTests(*_):
   def testTheTestForNoSpacesAroundLines():
     passing = testForNoSpacesAroundLines('', b'', '', 'La la la\nLa la\nLa\n', {}) == CODE_OK
@@ -34,8 +39,13 @@ def testTheTests(*_):
     passing = testForProperEllipses('', b'', '', 'La la la\nLa la\nLa…\n', {}) == CODE_OK
     failing = testForProperEllipses('', b'', '', 'She said..\n', {}) == CODE_WARN
     return passing and failing
+  def testTheTestForNoMinuses():
+    passing = testForNoMinuses('', b'', '', 'La la la…\n', {}) == CODE_OK
+    failing = testForNoMinuses('', b'', '', 'She said - he said\n', {}) == CODE_WARN
+    return passing and failing
   if not testTheTestForNoSpacesAroundLines() \
   or not testTheTestForSmartQuotes() \
-  or not testTheTestForProperEllipses():
+  or not testTheTestForProperEllipses() \
+  or not testTheTestForNoMinuses():
     return CODE_ERR
   return CODE_OK
