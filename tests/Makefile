@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
 
-all:
+test:
 	@python3 database-tests.py
-.PHONY: all
+.PHONY: test
