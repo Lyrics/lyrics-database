@@ -16,6 +16,7 @@ class colors:
   SUCCESS = '\033[92m'
   WARNING = '\033[93m'
   ERROR = '\033[91m'
+  BOLD = '\033[1m'
   RESET_ALL = '\033[0m'
 
 def formatTestModuleName(fileName):
@@ -28,7 +29,7 @@ def formatTestModuleName(fileName):
 def formatTestName(functionName):
   return re.sub(r'(?<!^)(?=[A-Z])', ' ', functionName).lower().capitalize()
 
-def formatStatLine(key, value):
+def formatStatsLine(key, value):
   return '{:·<53}{}'.format(key, value)
 
 def splitLyricsIntoTextAndMetadata(lyricsFileContents):
@@ -76,7 +77,7 @@ def parseMetadata(metadata):
     dictionary[key] = valuepartials
   return dictionary
 
-def supports_colors():
+def supportsColors():
     supported_platform = sys.platform != 'win32' or 'ANSICON' in os.environ
     is_a_tty = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
     return supported_platform and is_a_tty
@@ -84,21 +85,69 @@ def supports_colors():
 def formatTestStatusLabel(code):
   result = '['
   if code == CODE_OK:
-    if supports_colors():
+    if supportsColors():
       result += colors.SUCCESS
     result += 'OK'
   elif code == CODE_WARN:
-    if supports_colors():
+    if supportsColors():
       result += colors.WARNING
     result += 'WARN'
   elif code == CODE_ERR:
-    if supports_colors():
+    if supportsColors():
       result += colors.ERROR
     result += 'ERR'
-  if supports_colors():
+  if supportsColors():
     result += colors.RESET_ALL
   result += ']'
   return result
+
+def boldText(text):
+  if supportsColors():
+    return colors.BOLD + text + colors.RESET_ALL
+  else:
+    return text
+
+def printStats(lines):
+  print("_" * len(lines[0]))
+  for line in lines:
+    print(line)
+  print("‾" * len(lines[-1]))
+  print() # Print newline at end for equal vertical margin
+
+def readDatabaseDirectory(databaseSourceDir):
+  database = {}
+  for letter in sorted(os.listdir(databaseSourceDir)):
+    letterPath = os.path.join(databaseSourceDir, letter)
+    if os.path.isfile(letterPath):
+      database[letter] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+    else:
+      for artist in sorted(os.listdir(letterPath), key=str.lower):
+        artistPath = os.path.join(letterPath, artist)
+        artistShortPath = os.path.join(letter, artist)
+        if os.path.isfile(artistPath):
+          database[artistShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+        else:
+          for album in sorted(os.listdir(artistPath), key=str.lower):
+            albumPath = os.path.join(artistPath, album)
+            albumShortPath = os.path.join(artistShortPath, album)
+            if os.path.isfile(albumPath):
+              database[albumShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+            else:
+              for recording in sorted(os.listdir(albumPath), key=str.lower):
+                recordingPath = os.path.join(albumPath, recording)
+                # Read file as bytes
+                file = open(recordingPath, 'rb')
+                lyricsFileBinaryContents = file.read()
+                file.close()
+                lyricsFileContents = lyricsFileBinaryContents.decode('utf-8')
+                recordingShortPath = os.path.join(letter, artist, album, recording)
+                database[recordingShortPath] = {
+                  'b': lyricsFileBinaryContents,
+                  'c': lyricsFileContents,
+                  't': getText(lyricsFileContents),
+                  'm': parseMetadata(getMetadata(lyricsFileContents))
+                }
+  return database
 
 # Mark test script start time
 startTime = time.process_time()
@@ -120,41 +169,7 @@ for moduleFilename in sorted(os.listdir(testModulesDirectory), key=str.lower):
         testCount += 1
 
 # 2. Read files into memory
-# TODO convert it into a function
-database = {}
-databaseSourceDir = '../database'
-for letter in sorted(next(os.walk(databaseSourceDir))[1]):
-    letterPath = os.path.join(databaseSourceDir, letter)
-    letterShortPath = os.path.join(letter)
-    if os.path.isfile(letterPath):
-      database[letterShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
-    else:
-      for artist in sorted(next(os.walk(letterPath))[1], key=str.lower):
-        artistPath = os.path.join(letterPath, artist)
-        artistShortPath = os.path.join(letter, artist)
-        if os.path.isfile(artistPath):
-          database[artistShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
-        else:
-          for album in sorted(next(os.walk(artistPath))[1], key=str.lower):
-            albumPath = os.path.join(artistPath, album)
-            albumShortPath = os.path.join(letter, artist, album)
-            if os.path.isfile(artistPath):
-              database[artistShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
-            else:
-              for recording in sorted(next(os.walk(albumPath))[2], key=str.lower):
-                recordingPath = os.path.join(albumPath, recording)
-                # Read file as bytes
-                file = open(recordingPath, 'rb')
-                lyricsFileBinaryContents = file.read()
-                file.close()
-                lyricsFileContents = lyricsFileBinaryContents.decode('utf-8')
-                recordingShortPath = os.path.join(letter, artist, album, recording)
-                database[recordingShortPath] = {
-                  'b': lyricsFileBinaryContents,
-                  'c': lyricsFileContents,
-                  't': getText(lyricsFileContents),
-                  'm': parseMetadata(getMetadata(lyricsFileContents))
-                }
+database = readDatabaseDirectory('../database')
 
 # 3. Run tests
 testErrorCount = 0
@@ -167,16 +182,16 @@ for path in database:
   okFiles[path] = 1
 # Iterate through test modules
 for testModuleFilename in testModules:
-  print(testModuleFilename + ':')
+  print(boldText(testModuleFilename + ' tests') + ':')
   # Iterate through tests within the current test module
   for testName in testModules[testModuleFilename]:
     readableTestName = formatTestName(testName)
     testres = CODE_OK
     if testName == "testTheTests":
-      # Run self-tests only once instead of for every item
+      # Run self-tests only once instead of for every item in the database
       res = testModules[testModuleFilename]["testTheTests"]()
       if res != CODE_OK:
-        print('Failed to pass ' + readableTestName.lower())
+        print('Failed to pass ' + readableTestName)
         testErrorCount += 1
       if res > testres:
         testres = res
@@ -186,12 +201,12 @@ for testModuleFilename in testModules:
         item = database[path]
         res = testModules[testModuleFilename][testName](path, item['b'], item['c'], item['t'], item['m'])
         if res == CODE_ERR:
-          print('Failed to pass ' + readableTestName.lower() + ' (error):', path, file=sys.stderr)
+          print('Failed to pass ' + readableTestName + ' (error):', path, file=sys.stderr)
           testErrorCount += 1
           errorCausingFiles[path] = 1
           okFiles.pop(path, None)
         elif res == CODE_WARN:
-          print('Failed to pass ' + readableTestName.lower() + ' (warning):', path, file=sys.stderr)
+          print('Failed to pass ' + readableTestName + ' (warning):', path, file=sys.stderr)
           testWarningCount += 1
           warningCausingFiles[path] = 1
           okFiles.pop(path, None)
@@ -207,24 +222,19 @@ for testModuleFilename in testModules:
   # Separate output of test modules with a single newline
   print()
 
-# 4. Print stats
-lines = [
-  formatStatLine("Test module count", str(len(testModules))),
-  formatStatLine("Total number of tests", testCount),
-  formatStatLine("Number of errors triggered by tests", testErrorCount),
-  formatStatLine("Number of warnings triggered by tests", testWarningCount),
-  formatStatLine("Total number of texts in the database", len(database)),
-  formatStatLine("Number of text files that contain errors", len(errorCausingFiles)),
-  formatStatLine("Number of text files that contain warnings", len(warningCausingFiles)),
-  formatStatLine("Number of text files without errors or warnings", len(okFiles)),
-  formatStatLine("Percentage of text files without errors or warnings", '{0:.2f}'.format(len(okFiles) / len(database) * 100) + '%'),
-  formatStatLine("Test suite running time", '{0:.3f}'.format(time.process_time() - startTime) + 's'),
-]
-print("_" * len(lines[0]))
-for line in lines:
-  print(line)
-print("‾" * len(lines[-1]))
-print() # Print newline at end for equal vertical margin
+# 4. Print stats summary
+printStats([
+  formatStatsLine("Test module count", str(len(testModules))),
+  formatStatsLine("Total number of tests", testCount),
+  formatStatsLine("Number of errors triggered by tests", testErrorCount),
+  formatStatsLine("Number of warnings triggered by tests", testWarningCount),
+  formatStatsLine("Total number of texts in the database", len(database)),
+  formatStatsLine("Number of text files that contain errors", len(errorCausingFiles)),
+  formatStatsLine("Number of text files that contain warnings", len(warningCausingFiles)),
+  formatStatsLine("Number of text files without errors or warnings", len(okFiles)),
+  formatStatsLine("Percentage of text files without errors or warnings", '{0:.2f}'.format(len(okFiles) / len(database) * 100) + '%'),
+  formatStatsLine("Test suite running time", '{0:.3f}'.format(time.process_time() - startTime) + 's'),
+])
 
 # 5. Return proper exit code
 if testErrorCount > 0:
