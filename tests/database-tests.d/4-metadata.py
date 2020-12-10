@@ -7,11 +7,38 @@ def testForMetadataToBePresent(path, bytes, contents, text, metadata):
     return CODE_ERR
   return CODE_OK
 
+def testForUnknownMetadataKeys(path, bytes, contents, text, metadata):
+  keys = list(metadata.keys())
+  knownMetadataKeys = [
+    "Name",
+    "Artist",
+    "Album",
+    "Disc no",
+    "Track no",
+    "Year",
+    "Language",
+    "MusicBrainz ID",
+    "Cover of",
+    "Parody of",
+    "Samples",
+    "Original text by",
+    "Original text copyright",
+  ]
+  for key in keys:
+    if not key in knownMetadataKeys:
+      return CODE_ERR
+  return CODE_OK
+
 def testTheTests(*_):
   def testTheTestForMetadataToBePresent():
     passing = testForMetadataToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }) == CODE_OK
     failing = testForMetadataToBePresent('', b'', '', '', {}) == CODE_ERR
     return passing and failing
-  if not testTheTestForMetadataToBePresent():
+  def testTheTestForUnknownMetadataKeys():
+    passing = testForUnknownMetadataKeys('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }) == CODE_OK
+    failing = testForUnknownMetadataKeys('', b'', '', '', { 'Copyright': 'Some company' }) == CODE_ERR
+    return passing and failing
+  if not testTheTestForMetadataToBePresent()\
+  or not testTheTestForUnknownMetadataKeys():
     return CODE_ERR
   return CODE_OK
