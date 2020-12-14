@@ -6,9 +6,6 @@ on:
     - 'README.md'
     - 'docs/'
     branches: [ master ]
-      paths-ignore:
-      - 'README.md'
-      - 'docs/'
 
 jobs:
   test:
