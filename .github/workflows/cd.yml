@@ -3,10 +3,12 @@ name: CD
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+    - 'README.md'
+    - 'docs/'
 
 jobs:
   build:
-    if: contains(toJson(github.event.commits), '[skip ci]') == false
     name: Build & deploy website to GitHub Pages
     runs-on: ubuntu-latest
 
