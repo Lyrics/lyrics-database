@@ -2,7 +2,13 @@ name: CI
 
 on:
   pull_request:
+    paths-ignore:
+    - 'README.md'
+    - 'docs/'
     branches: [ master ]
+      paths-ignore:
+      - 'README.md'
+      - 'docs/'
 
 jobs:
   test:
@@ -12,7 +18,6 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
-    if: contains(toJson(github.event.commits), '[skip ci]') == false
     runs-on: ${{ matrix.os }}
 
     steps:
