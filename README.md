@@ -18,6 +18,11 @@ Here you can read and add song lyrics.
  **solution**: perform automated checks prior accepting contributions to ensure overall database quality
 
 
+## References
+
+ * [Instructions for contributing](https://github.com/Lyrics/lyrics/wiki/Contributing)
+
+
 ## Legal
 
 Materials provided here are intended for non-commercial educational use. By accessing the documents here you agree that these materials are for private, educational use only. Materials here are protected by copyright and are the property of their respective owners.
@@ -33,8 +38,3 @@ To be effective, the notification must be in writing and contain the following i
 * your address, telephone number, and email address;
 * a statement by you that you have a good faith belief that the disputed use is not authorized by the copyright or intellectual property owner, its agent, or the law;
 * a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright or intellectual property owner or authorized to act on the copyright or intellectual property owner‘s behalf.
-
-
-## References
-
- * [Instructions for contributing](https://github.com/Lyrics/lyrics/wiki/Contributing)
