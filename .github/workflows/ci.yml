@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-
+    if: contains(toJson(github.event.commits), '[skip ci]') == false
     strategy:
       matrix:
         os:
