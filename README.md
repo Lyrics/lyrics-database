@@ -1,6 +1,6 @@
 # Lyrics
 
-Here you can read and add song lyrics.
+Here you can read and add song lyrics. Check out the documentation [here](https://docs.contour.so/Lyrics/lyrics).
 
 
 ### What this project is contributing to the world
