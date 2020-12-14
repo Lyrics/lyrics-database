@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    if: contains(toJson(github.event.commits), '[skip ci]') == false
     name: Build & deploy website to GitHub Pages
     runs-on: ubuntu-latest
 
