@@ -1,6 +1,11 @@
+* [Format](https://github.com/Lyrics/lyrics/tree/master/docs/Format.md)
+* [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
+* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
+* [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
+
 ### About the open lyrics database
 
-Many artists don't have their lyrics available online in the correct form.  
+Many artists don't have their lyrics available online in the correct form.
 This project has started in an attempt to resolve this issue through obtaining and publishing lyrics by reaching out to the original authors.
 
 

@@ -1,3 +1,8 @@
+* [Docs Home](https://github.com/Lyrics/lyrics/tree/master/docs/README.md)
+* [Format](https://github.com/Lyrics/lyrics/tree/master/docs/Format.md)
+* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
+* [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
+
 ### So this is yet another lyrics website?
 Not quite. Think of it as a fan sourced tribute to music with words. Nothing but lyrics submitted by you and other GitHub users, all in one place, free to access by anyone, at any time.
 

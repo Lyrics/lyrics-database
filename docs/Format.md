@@ -1,15 +1,20 @@
+* [Docs Home](https://github.com/Lyrics/lyrics/tree/master/docs/README.md)
+* [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
+* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
+* [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
+
 # Intro
 The lyrics are stored in plain text, with no filename extension.
 
-We avoid using "formulas" in lyrics.  
+We avoid using "formulas" in lyrics.
 That means no things like `[x2]`, `[chorus]` or other ways to compress texts.
 The idea is basically to have a full text, which you can read as you listen to the song.
 
 Having duplicate files is fine, as long as the artist really does have the same song across multiple albums.
-Using symlinks for that, however, is not a good idea. We've tried.  
+Using symlinks for that, however, is not a good idea. We've tried.
 It basically prevents the lyrics from being viewed easily via GitHub's interface and unnecessarily complicates things.
 
-Any language is welcome, including translations.  
+Any language is welcome, including translations.
 Most likely we'll put translations into `/translations/` which will mirror the `/database/` directory structure.
 
 Punctuation marks are fine to use.
@@ -24,32 +29,32 @@ Metadata goes to the bottom of the song, under an arbitrary amount of underscore
 
 ## Possible metadata values
 
-  * Language - Contains language code (how is this decided exactly, link people to some standard?), can be multiple. If there are multiple, generally put the language the song is mainly in first, but if you can't decide, don't sweat it, the order is not that important.  
+  * Language - Contains language code (how is this decided exactly, link people to some standard?), can be multiple. If there are multiple, generally put the language the song is mainly in first, but if you can't decide, don't sweat it, the order is not that important.
 ```
 Language  American English
 ```
 
-  * Name - Song name  
+  * Name - Song name
 ```
 Name  Runaway Train
 ```
 
-  * Artist - Artist's name  
+  * Artist - Artist's name
 ```
 Artist  Oleander
 ```
 
-  * Album - Album name  
+  * Album - Album name
 ```
 Album  Joyride
 ```
 
-  * Track no - Track #  
+  * Track no - Track #
 ```
 Track no  11
 ```
 
-  * Year - Year the song was released in  
+  * Year - Year the song was released in
 ```
 Year  2003
 ```
@@ -58,12 +63,12 @@ Year  2003
 MusicBrainz ID  29f4ca0c-6e1e-4e1b-a850-983e542f7e5a
 ```
 
-  * Original text by - Artists who wrote the song  
+  * Original text by - Artists who wrote the song
 ```
 Original text by  Douglas James Eldridge,  Richard C. Ivanisevich,  Thomas Allan Flowers
 ```
 
-  * Original text copyright - Who currently owns the copyright to the original text of the song  
+  * Original text copyright - Who currently owns the copyright to the original text of the song
 ```
 Original text copyright  Universal Music Publishing Group
 ```
