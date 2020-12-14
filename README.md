@@ -1,6 +1,6 @@
 # Lyrics
 
-Here you can read and add song lyrics. Check out the documentation [here](https://docs.contour.so/Lyrics/lyrics).
+Here you can read and add song lyrics. 
 
 
 ### What this project is contributing to the world
@@ -19,8 +19,9 @@ Here you can read and add song lyrics. Check out the documentation [here](https:
 
 
 ## References
+ Check out the documentation [here](https://docs.contour.so/Lyrics/lyrics).
 
- * [Instructions for contributing](https://github.com/Lyrics/lyrics/wiki/Contributing)
+ * [Instructions for contributing](https://docs.contour.so/Lyrics/lyrics/manual-3w93hpzablu000000000)
 
 
 ## Legal
