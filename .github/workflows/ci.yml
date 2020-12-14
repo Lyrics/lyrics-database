@@ -12,12 +12,12 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
+    if: contains(toJson(github.event.commits), '[skip ci]') == false
     runs-on: ${{ matrix.os }}
 
     steps:
     - run: git config --global core.autocrlf false
     - uses: actions/checkout@v2
-    - if: contains(toJson(github.event.commits), '[skip ci]') == false
     - name: Run Tests
       if: matrix.os != 'windows-latest'
       run: cd tests && make
