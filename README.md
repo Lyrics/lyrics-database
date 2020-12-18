@@ -5,16 +5,16 @@ Here you can read and add song lyrics.
 
 ### What this project is contributing to the world
 
- - **problem**: quality of lyrics on the Internet leaves something to be desired, often following the basic quantity over quality paradigm
+ - **problem**: quality of lyrics on the Internet leaves something to be desired, often following the basic quantity over quality paradigm<br/>
  **solution**: maintain lyrics database as an open source project, let people contribute texts to songs they love; reach out to original authors, kindly asking to share their lyrics with the world
 
- - **problem**: little motivation contributing to resources that may disappear
+ - **problem**: little motivation contributing to resources that may disappear<br/>
  **solution**: to never lose the progress, make it possible for anyone to easily download the whole database
 
- - **problem**: lyrics websites are often unpleasant to view due to inaccessible design and large amount of ads
+ - **problem**: lyrics websites are often unpleasant to view due to inaccessible design and large amount of ads<br/>
  **solution**: create and launch a lightweight open-source lyrics website
 
- - **problem**: it's generally not easy to maintain quality control over large datasets
+ - **problem**: it's generally not easy to maintain quality control over large datasets<br/>
  **solution**: perform automated checks prior accepting contributions to ensure overall database quality
 
 
