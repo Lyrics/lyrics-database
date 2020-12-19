@@ -19,7 +19,6 @@ def testForUnknownMetadataKeys(path, bytes, contents, text, metadata):
     "Language",
     "MusicBrainz ID",
     "Cover of",
-    "Parody of",
     "Samples",
     "Original text by",
     "Original text copyright",
