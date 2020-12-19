@@ -5,7 +5,7 @@
 
 ### About the open lyrics database
 
-Many artists don't have their lyrics available online in the correct form.
+Many artists don't have their lyrics available online in the correct form.\
 This project has started in an attempt to resolve this issue through obtaining and publishing lyrics by reaching out to the original authors.
 
 

@@ -32,17 +32,17 @@ Use this Unicode symbol instead: `∕`
 
 #### Some part of the song can't be heard properly
 
-Searching for lives or covers sometimes helps.
+Searching for lives or covers sometimes helps.\
 Putting in your best guess is preferable over using a placeholder.
 
 #### I want to save trees and use things like "Repeat x3" and "Chorus:"
 
-Don't do it.
+Don't do it.\
 That's not how you save trees.
 
 #### I'm not sure who to trust when it comes to song/artist/album names
 
-Popular websites such as Wikipedia may be a little off when it comes to naming.
+Popular websites such as Wikipedia may be a little off when it comes to naming.\
 [MusicBrainz.org](https://musicbrainz.org) happens to be extremely useful in such cases.
 
 #### Lyrics in the music video differ from the album version
@@ -51,5 +51,5 @@ Stick to the album version. Video edits rarely hold extra lyrics, they're most o
 
 #### The song is a single that does not belong to an album
 
-Use the song name as the album name.
+Use the song name as the album name.\
 For example, Six Shooter by Coyote Kisses would end up being `C/Coyote Kisses/Six Shooter/Six Shooter`

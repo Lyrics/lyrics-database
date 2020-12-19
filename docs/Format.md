@@ -7,17 +7,17 @@
 The lyrics are stored in plain text, with no filename extension.
 
 We avoid using "formulas" in lyrics.
-That means no things like `[x2]`, `[chorus]` or other ways to compress texts.
+That means no things like `[x2]`, `[chorus]` or other ways to compress texts.\
 The idea is basically to have a full text, which you can read as you listen to the song.
 
-Having duplicate files is fine, as long as the artist really does have the same song across multiple albums.
-Using symlinks for that, however, is not a good idea. We've tried.
+Having duplicate files is fine, as long as the artist really does have the same song across multiple albums.\
+Using symlinks for that, however, is not a good idea. We've tried.\
 It basically prevents the lyrics from being viewed easily via GitHub's interface and unnecessarily complicates things.
 
-Any language is welcome, including translations.
+Any language is welcome, including translations.\
 Most likely we'll put translations into `/translations/` which will mirror the `/database/` directory structure.
 
-Punctuation marks are fine to use.
+Punctuation marks are fine to use.\
 Currently we use parenthesis to highlight that the bit is being sung by another voice.
 
 Samples are harder to deal with. It's okay to skip them, but eventually we'll either create a separate `/samples/` directory for those, or put them inside square braces within the song text.
