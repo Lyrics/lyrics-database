@@ -12,3 +12,5 @@ Here they are:
  - Boy Harsher [[website](https://boyharsher.com/)]
  - Jean Paul Hare of JK/47 [[bandcamp](https://jaykay47.bandcamp.com/)]
  - Sam HaiNe [[bandcamp](https://samhaine.bandcamp.com/)]
+ - Slade Templeton of Crying Vessel [[bandcamp](https://cryingvessel.bandcamp.com/)]
+ 
