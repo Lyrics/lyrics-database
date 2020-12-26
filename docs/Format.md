@@ -131,7 +131,7 @@ text for all fields, starting at column 25. Remove fields that do not apply.
 ```
 
 
-______________________________________________________________________________
+________________________________
 Language
 Name
 Artist
