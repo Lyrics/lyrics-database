@@ -25,7 +25,10 @@ Samples are harder to deal with. It's okay to skip them, but eventually we'll ei
 We stay away from censoring texts. This means it's okay to commit explicit words.
 
 # Metadata
-Metadata goes to the bottom of the song, under an arbitrary amount of underscores. The name of the variable and the actual value are separated with two spaces.
+Metadata goes to the bottom of the song, under a sequence of underscores. Make it equal in length to the
+line of the first metadata field (including its value).
+
+The name of the variable and the actual value are separated with two spaces.
 
 ## Possible metadata values
 
