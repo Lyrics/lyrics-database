@@ -49,6 +49,11 @@ Artist  Oleander
 Album  Joyride
 ```
 
+  * Disc no - Disc # (if part of a multi-disc album release)
+```
+Disc no   2
+```
+
   * Track no - Track #
 ```
 Track no  11
@@ -58,9 +63,20 @@ Track no  11
 ```
 Year  2003
 ```
+
   * Recording ID in MusicBrainz database
 ```
 MusicBrainz ID  29f4ca0c-6e1e-4e1b-a850-983e542f7e5a
+```
+
+  * Cover of - Add this field if the song is a cover version
+```
+Cover of  ...
+```
+
+  * Samples - (optional)
+```
+Samples   ...
 ```
 
   * Original text by - Artists who wrote the song
@@ -105,4 +121,27 @@ Yeah.
 
 __________________________
 Language  American English
+```
+
+# template
+
+This is a template you can copy and paste into your lyrics file. Add
+text for all fields, starting at column 25. Remove fields that do not apply.
+
+```
+
+
+______________________________________________________________________________
+Language
+Name
+Artist
+Album
+Disc no
+Track no
+Year
+MusicBrainz ID
+Cover of
+Samples
+Original text by
+Original text copyright
 ```
