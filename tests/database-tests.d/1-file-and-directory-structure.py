@@ -2,13 +2,13 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
-def testForSongFilePathToAlwaysHaveFourParts(path, bytes, contents, text, metadata):
+def testForSongFilePathToAlwaysHaveFourParts(path, bytes, plaintext, lyrics, metadata):
   parts = path.split('/')
   if len(parts) != 4:
     return CODE_ERR
   return CODE_OK
 
-def testForNoExtensionsInSongFileNames(path, bytes, contents, text, metadata):
+def testForNoExtensionsInSongFileNames(path, bytes, plaintext, lyrics, metadata):
   parts = path.split('/')
   if len(parts) == 4:
     songFileName = parts[3]
@@ -16,7 +16,7 @@ def testForNoExtensionsInSongFileNames(path, bytes, contents, text, metadata):
       return CODE_WARN # Not an error because song names may produce false positives
   return CODE_OK
 
-def testForNoSpacesWithinFileDirNames(path, bytes, contents, text, metadata):
+def testForNoSpacesWithinFileDirNames(path, bytes, plaintext, lyrics, metadata):
   for part in path.split('/'):
     if part.startswith(' ') or part.endswith(' '):
       return CODE_ERR

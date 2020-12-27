@@ -2,12 +2,12 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
-def testForMetadataToBePresent(path, bytes, contents, text, metadata):
+def testForMetadataToBePresent(path, bytes, plaintext, lyrics, metadata):
   if len(metadata) < 1:
     return CODE_ERR
   return CODE_OK
 
-def testForUnknownMetadataKeys(path, bytes, contents, text, metadata):
+def testForUnknownMetadataKeys(path, bytes, plaintext, lyrics, metadata):
   keys = list(metadata.keys())
   knownMetadataKeys = [
     "Name",
@@ -27,6 +27,9 @@ def testForUnknownMetadataKeys(path, bytes, contents, text, metadata):
   for key in keys:
     if not key in knownMetadataKeys:
       return CODE_ERR
+  return CODE_OK
+
+def testForDuplicateTrackNumbers(path, bytes, plaintext, lyrics, metadata):
   return CODE_OK
 
 def testTheTests(*_):
