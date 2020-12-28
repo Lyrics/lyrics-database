@@ -119,19 +119,19 @@ def readDatabaseDirectory(databaseSourceDir):
   for letter in sorted(os.listdir(databaseSourceDir)):
     letterPath = os.path.join(databaseSourceDir, letter)
     if os.path.isfile(letterPath):
-      database[letter] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+      database[letter] = { 'b': b'', 'p': '', 'l': '', 'm': '' }
     else:
       for artist in sorted(os.listdir(letterPath), key=str.lower):
         artistPath = os.path.join(letterPath, artist)
         artistShortPath = os.path.join(letter, artist)
         if os.path.isfile(artistPath):
-          database[artistShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+          database[artistShortPath] = { 'b': b'', 'p': '', 'l': '', 'm': '' }
         else:
           for album in sorted(os.listdir(artistPath), key=str.lower):
             albumPath = os.path.join(artistPath, album)
             albumShortPath = os.path.join(artistShortPath, album)
             if os.path.isfile(albumPath):
-              database[albumShortPath] = { 'b': b'', 'c': '', 't': '', 'm': '' }
+              database[albumShortPath] = { 'b': b'', 'p': '', 'l': '', 'm': '' }
             else:
               for recording in sorted(os.listdir(albumPath), key=str.lower):
                 recordingPath = os.path.join(albumPath, recording)
@@ -143,8 +143,8 @@ def readDatabaseDirectory(databaseSourceDir):
                 recordingShortPath = os.path.join(letter, artist, album, recording)
                 database[recordingShortPath] = {
                   'b': lyricsFileBinaryContents,
-                  'c': lyricsFileContents,
-                  't': getText(lyricsFileContents),
+                  'p': lyricsFileContents,
+                  'l': getText(lyricsFileContents),
                   'm': parseMetadata(getMetadata(lyricsFileContents))
                 }
   return database
@@ -187,11 +187,11 @@ for testModuleFilename in testModules:
   for testName in testModules[testModuleFilename]:
     readableTestName = formatTestName(testName)
     testres = CODE_OK
-    if testName == "testTheTests":
+    if testName == "testForTests":
       # Run self-tests only once instead of for every item in the database
-      res = testModules[testModuleFilename]["testTheTests"]()
+      res = testModules[testModuleFilename]["testForTests"]()
       if res != CODE_OK:
-        print('Failed to pass ' + readableTestName)
+        print('Failed to pass ' + readableTestName.lower())
         testErrorCount += 1
       if res > testres:
         testres = res
@@ -199,7 +199,7 @@ for testModuleFilename in testModules:
       # Perform current test on every item in the database
       for path in database:
         item = database[path]
-        res = testModules[testModuleFilename][testName](path, item['b'], item['c'], item['t'], item['m'])
+        res = testModules[testModuleFilename][testName](path, item['b'], item['p'], item['l'], item['m'], database)
         if res == CODE_ERR:
           print('Failed to pass ' + readableTestName + ' (error):', path, file=sys.stderr)
           testErrorCount += 1
