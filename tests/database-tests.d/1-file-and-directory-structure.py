@@ -22,7 +22,13 @@ def testForNoSpacesWithinFileDirNames(path, bytes, plaintext, lyrics, metadata, 
       return CODE_ERR
   return CODE_OK
 
-def testTheTests(*_):
+def testForProperFirstSymbolInArtistDirectoryName(path, bytes, plaintext, lyrics, metadata, database):
+  parts = path.split('/')
+  if not parts[1].startswith(parts[0]):
+    return CODE_ERR
+  return CODE_OK
+
+def testForTests(*_):
   def testTheTestForSongFilePathToAlwaysHaveFourParts():
     passing = testForSongFilePathToAlwaysHaveFourParts('A/Artist/Album/Recording', b'', '', '', {}, {}) == CODE_OK
     failing = testForSongFilePathToAlwaysHaveFourParts('A/Artist/Recording', b'', '', '', {}, {}) == CODE_ERR
@@ -35,8 +41,13 @@ def testTheTests(*_):
     passing = testForNoSpacesWithinFileDirNames('A/Artist/Album/Recording', b'', '', '', {}, {}) == CODE_OK
     failing = testForNoSpacesWithinFileDirNames(' A / Artist / Album / Recording.txt ', b'', '', '', {}, {}) == CODE_ERR
     return passing and failing
+  def testTheTestForProperFirstSymbolInArtistDirectoryName():
+    passing = testForProperFirstSymbolInArtistDirectoryName('A/Artist/Album/Recording', b'', '', '', {}, {}) == CODE_OK
+    failing = testForProperFirstSymbolInArtistDirectoryName('A/Brtist/Album/Recording', b'', '', '', {}, {}) == CODE_ERR
+    return passing and failing
   if not testTheTestForSongFilePathToAlwaysHaveFourParts() \
   or not testTheTestForNoExtensionsInSongFileNames() \
-  or not testTheTestForNoSpacesWithinFileDirNames():
+  or not testTheTestForNoSpacesWithinFileDirNames() \
+  or not testTheTestForProperFirstSymbolInArtistDirectoryName():
     return CODE_ERR
   return CODE_OK

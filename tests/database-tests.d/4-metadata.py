@@ -48,7 +48,7 @@ def testForIdenticalTrackNumbers(path, bytes, plaintext, lyrics, metadata, datab
                   return CODE_ERR
   return CODE_OK
 
-def testTheTests(*_):
+def testForTests(*_):
   def testTheTestForMetadataToBePresent():
     passing = testForMetadataToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
     failing = testForMetadataToBePresent('', b'', '', '', {}, {}) == CODE_ERR
@@ -62,8 +62,8 @@ def testTheTests(*_):
     mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Track no': '6' } } }
     failing = testForIdenticalTrackNumbers('A/Artist/Album/Recording', b'', '', '', { 'Track no': '6' }, mockDatabase) == CODE_ERR
     return passing and failing
-  if not testTheTestForMetadataToBePresent()\
-  or not testTheTestForUnknownMetadataKeys()\
+  if not testTheTestForMetadataToBePresent() \
+  or not testTheTestForUnknownMetadataKeys() \
   or not testTheTestForIdenticalTrackNumbers():
     return CODE_ERR
   return CODE_OK

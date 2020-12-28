@@ -26,7 +26,7 @@ def testForProperEllipses(path, bytes, plaintext, lyrics, metadata, database):
     return CODE_WARN
   return CODE_OK
 
-def testTheTests(*_):
+def testForTests(*_):
   def testTheTestForNoSpacesAroundLines():
     passing = testForNoSpacesAroundLines('', b'', '', 'La la la\nLa la\nLa\n', {}, {}) == CODE_OK
     failing = testForNoSpacesAroundLines('', b'', '', 'La la \n La \nLa ', {}, {}) == CODE_ERR

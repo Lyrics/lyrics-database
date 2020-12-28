@@ -187,11 +187,11 @@ for testModuleFilename in testModules:
   for testName in testModules[testModuleFilename]:
     readableTestName = formatTestName(testName)
     testres = CODE_OK
-    if testName == "testTheTests":
+    if testName == "testForTests":
       # Run self-tests only once instead of for every item in the database
-      res = testModules[testModuleFilename]["testTheTests"]()
+      res = testModules[testModuleFilename]["testForTests"]()
       if res != CODE_OK:
-        print('Failed to pass ' + readableTestName)
+        print('Failed to pass ' + readableTestName.lower())
         testErrorCount += 1
       if res > testres:
         testres = res

@@ -24,7 +24,7 @@ def testForNoUnusualCharacters(path, bytes, plaintext, lyrics, metadata, databas
       return CODE_ERR
   return CODE_OK
 
-def testTheTests(*_):
+def testForTests(*_):
   def testTheTestForNewlineAtEndOfFile():
     passing = testForNewlineAtEndOfFile('', b'', 'La la la\n', '', {}, {}) == CODE_OK
     failing = testForNewlineAtEndOfFile('', b'', 'La la', '', {}, {}) == CODE_ERR
