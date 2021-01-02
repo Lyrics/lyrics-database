@@ -7,6 +7,11 @@ def testForMetadataToBePresent(path, bytes, plaintext, lyrics, metadata, databas
     return CODE_ERR
   return CODE_OK
 
+def testForRequiredMetadataKeysToBePresent(path, bytes, plaintext, lyrics, metadata, database):
+  if not 'Name' in metadata or not 'Artist' in metadata:
+    return CODE_ERR
+  return CODE_OK
+
 def testForUnknownMetadataKeys(path, bytes, plaintext, lyrics, metadata, database):
   keys = list(metadata.keys())
   knownMetadataKeys = [
@@ -29,7 +34,7 @@ def testForUnknownMetadataKeys(path, bytes, plaintext, lyrics, metadata, databas
       return CODE_ERR
   return CODE_OK
 
-def testForIdenticalTrackNumbers(path, bytes, plaintext, lyrics, metadata, database):
+def testForDuplicateTrackNumbers(path, bytes, plaintext, lyrics, metadata, database):
   trackNumber = metadata['Track no'] if 'Track no' in metadata else None
   if trackNumber != None:
     albumPath = "/".join(path.split("/")[:-1]) + "/"
@@ -48,22 +53,63 @@ def testForIdenticalTrackNumbers(path, bytes, plaintext, lyrics, metadata, datab
                   return CODE_ERR
   return CODE_OK
 
+def testForMatchingArtistNames(path, bytes, plaintext, lyrics, metadata, database):
+  trackArtist = metadata['Artist'][0] if 'Artist' in metadata else None
+  if trackArtist != None:
+    albumPath = "/".join(path.split("/")[:-1]) + "/"
+    for (k, v) in database.items():
+      if k.startswith(albumPath) and k != path:
+          tA = v['m']['Artist'][0] if 'Artist' in v['m'] else None
+          if tA != None and tA != trackArtist:
+                return CODE_ERR
+  return CODE_OK
+
+def testForMatchingAlbumNames(path, bytes, plaintext, lyrics, metadata, database):
+  trackAlbum = metadata['Album'][0] if 'Album' in metadata else None
+  if trackAlbum != None:
+    albumPath = "/".join(path.split("/")[:-1]) + "/"
+    for (k, v) in database.items():
+      if k.startswith(albumPath) and k != path:
+          tA = v['m']['Album'][0] if 'Album' in v['m'] else None
+          if tA != None and tA != trackAlbum:
+                return CODE_ERR
+  return CODE_OK
+
 def testForTests(*_):
   def testTheTestForMetadataToBePresent():
     passing = testForMetadataToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
     failing = testForMetadataToBePresent('', b'', '', '', {}, {}) == CODE_ERR
     return passing and failing
+  def testTheTestForRequiredMetadataKeysToBePresent():
+    passing = testForRequiredMetadataKeysToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
+    failing = testForRequiredMetadataKeysToBePresent('', b'', '', '', {}, {}) == CODE_ERR
+    return passing and failing
   def testTheTestForUnknownMetadataKeys():
     passing = testForUnknownMetadataKeys('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
     failing = testForUnknownMetadataKeys('', b'', '', '', { 'Copyright': 'Some company' }, {}) == CODE_ERR
     return passing and failing
-  def testTheTestForIdenticalTrackNumbers():
-    passing = testForIdenticalTrackNumbers('', b'', '', '', { 'Track no': '1' }, {}) == CODE_OK
+  def testTheTestForDuplicateTrackNumbers():
+    passing = testForDuplicateTrackNumbers('', b'', '', '', { 'Track no': '1' }, {}) == CODE_OK
     mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Track no': '6' } } }
-    failing = testForIdenticalTrackNumbers('A/Artist/Album/Recording', b'', '', '', { 'Track no': '6' }, mockDatabase) == CODE_ERR
+    failing = testForDuplicateTrackNumbers('A/Artist/Album/Recording', b'', '', '', { 'Track no': '6' }, mockDatabase) == CODE_ERR
+    return passing and failing
+  def testTheTestForMatchingArtistNames():
+    mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Artist': 'Artist Name' } } }
+    passing = testForMatchingArtistNames('', b'', '', '', { 'Artist': 'Artist Name' }, mockDatabase) == CODE_OK
+    mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Artist': 'artist name' } } }
+    failing = testForMatchingArtistNames('A/Artist/Album/Recording', b'', '', '', { 'Artist': 'Artist Name' }, mockDatabase) == CODE_ERR
+    return passing and failing
+  def testTheTestForMatchingAlbumNames():
+    mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Album': 'Album Name' } } }
+    passing = testForMatchingAlbumNames('', b'', '', '', { 'Album': 'Album Name' }, mockDatabase) == CODE_OK
+    mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Album': 'album name' } } }
+    failing = testForMatchingAlbumNames('A/Artist/Album/Recording', b'', '', '', { 'Album': 'Album Name' }, mockDatabase) == CODE_ERR
     return passing and failing
   if not testTheTestForMetadataToBePresent() \
+  or not testTheTestForRequiredMetadataKeysToBePresent() \
   or not testTheTestForUnknownMetadataKeys() \
-  or not testTheTestForIdenticalTrackNumbers():
+  or not testTheTestForDuplicateTrackNumbers() \
+  or not testTheTestForMatchingArtistNames() \
+  or not testTheTestForMatchingAlbumNames():
     return CODE_ERR
   return CODE_OK
