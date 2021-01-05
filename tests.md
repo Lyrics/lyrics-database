@@ -2,13 +2,17 @@
 
 Automated tests for validating integrity
 
-
 ## How to run tests
 
-    make
+```text
+make
+```
 
 or
 
-    make 2> /dev/null
+```text
+make 2> /dev/null
+```
 
-to suppress STDERR (reduces verbosity)
+to suppress STDERR \(reduces verbosity\)
+

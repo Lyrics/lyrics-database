@@ -1,0 +1,22 @@
+# Table of contents
+
+* [Lyrics](README.md)
+* [README](docs/README.md)
+  * [FAQ](docs/faq.md)
+  * [adr](docs/adr/README.md)
+    * [Use Markdown Architectural Decision Records](docs/adr/0000-use-markdown-architectural-decision-records.md)
+  * [Contributing](docs/contributing.md)
+  * [burrito](docs/taco.md)
+  * [Format](docs/format.md)
+  * [Credits](docs/credits.md)
+* [Tests for Open Lyrics Database](tests.md)
+* [database](database/README.md)
+  * [F](database/f/README.md)
+    * [Frittenbude](database/f/frittenbude/README.md)
+      * [Delfinarium](database/f/frittenbude/delfinarium/README.md)
+        * [Deutschland 500 \(feat](database/f/frittenbude/delfinarium/deutschland-500-feat.md)
+  * [D](database/d/README.md)
+    * [Diana Gitallog](database/d/diana-gitallog/README.md)
+      * [Été Rouge](database/d/diana-gitallog/ete-rouge/README.md)
+        * [Été Rouge \(feat](database/d/diana-gitallog/ete-rouge/ete-rouge-feat.md)
+

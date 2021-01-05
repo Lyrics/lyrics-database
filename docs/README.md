@@ -1,25 +1,25 @@
+# README
+
 * [Format](https://github.com/Lyrics/lyrics/tree/master/docs/Format.md)
 * [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
 * [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
 * [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
 
-### About the open lyrics database
+## About the open lyrics database
 
-Many artists don't have their lyrics available online in the correct form.\
-This project has started in an attempt to resolve this issue through obtaining and publishing lyrics by reaching out to the original authors.
+Many artists don't have their lyrics available online in the correct form. This project has started in an attempt to resolve this issue through obtaining and publishing lyrics by reaching out to the original authors.
 
-
-### Legal
+## Legal
 
 We attribute proper credits to every file in the database once the authorship and ownership are ensured.
 
+## Contributing
 
-### Contributing
-
-For corrections, contributions, or any other inquiries, please use <open.lyrics.database@gmail.com>
+For corrections, contributions, or any other inquiries, please use [open.lyrics.database@gmail.com](mailto:open.lyrics.database@gmail.com)
 
 It's also possible to work with the data directly via [this GitHub repository](https://github.com/Lyrics/lyrics).
 
-### Other
+## Other
 
 [Download the database as an archive](https://github.com/Lyrics/lyrics/archive/master.zip).
+
