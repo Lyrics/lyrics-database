@@ -1,8 +1,3 @@
-* [Format](https://github.com/Lyrics/lyrics/tree/master/docs/Format.md)
-* [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
-* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
-* [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
-
 ### About the open lyrics database
 
 Many artists don't have their lyrics available online in the correct form.\

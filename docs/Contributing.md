@@ -1,8 +1,3 @@
-* [Docs Home](https://github.com/Lyrics/lyrics/tree/master/docs/README.md)
-* [Format](https://github.com/Lyrics/lyrics/tree/master/docs/Format.md)
-* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
-* [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
-
 1. Fork the repository.
 2. Add files following the structure (see below).
 3. Make a PR.

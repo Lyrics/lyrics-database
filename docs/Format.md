@@ -1,8 +1,3 @@
-* [Docs Home](https://github.com/Lyrics/lyrics/tree/master/docs/README.md)
-* [FAQ](https://github.com/Lyrics/lyrics/tree/master/docs/FAQ.md)
-* [Credits](https://github.com/Lyrics/lyrics/tree/master/docs/Credits.md)
-* [Contributing](https://github.com/Lyrics/lyrics/tree/master/docs/Contributing.md)
-
 # Intro
 The lyrics are stored in plain text, with no filename extension.
 
