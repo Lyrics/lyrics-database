@@ -75,6 +75,25 @@ def testForMatchingAlbumNames(path, bytes, plaintext, lyrics, metadata, database
                 return CODE_ERR
   return CODE_OK
 
+def testForProperMetadataLanguageValues(path, bytes, plaintext, lyrics, metadata, database):
+  keys = list(metadata.keys())
+  properMetadataLanguageValues = [
+    "Unknown",
+    "American English",
+    "Australian English",
+    "British English",
+    "Canadian English",
+    "French",
+    "Italian",
+    "German",
+    "Portuguese",
+  ]
+  if "Language" in keys:
+    for language in metadata['Language']:
+      if not language in properMetadataLanguageValues:
+        return CODE_ERR
+  return CODE_OK
+
 def testForTests(*_):
   def testTheTestForMetadataToBePresent():
     passing = testForMetadataToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
@@ -105,11 +124,16 @@ def testForTests(*_):
     mockDatabase = { 'A/Artist/Album/Recording 2': { 'b': '', 'p': '', 'l': '', 'm': { 'Album': 'album name' } } }
     failing = testForMatchingAlbumNames('A/Artist/Album/Recording', b'', '', '', { 'Album': 'Album Name' }, mockDatabase) == CODE_ERR
     return passing and failing
+  def testTheTestForProperMetadataLanguageValues():
+    passing = testForProperMetadataLanguageValues('', b'', '', '', { 'Language': [ 'American English', 'French', 'Unknown' ] }, {}) == CODE_OK
+    failing = testForProperMetadataLanguageValues('', b'', '', '', { 'Language': [ 'en_US' ] }, {}) == CODE_ERR
+    return passing and failing
   if not testTheTestForMetadataToBePresent() \
   or not testTheTestForRequiredMetadataKeysToBePresent() \
   or not testTheTestForUnknownMetadataKeys() \
   or not testTheTestForDuplicateTrackNumbers() \
   or not testTheTestForMatchingArtistNames() \
-  or not testTheTestForMatchingAlbumNames():
+  or not testTheTestForMatchingAlbumNames() \
+  or not testTheTestForProperMetadataLanguageValues():
     return CODE_ERR
   return CODE_OK
