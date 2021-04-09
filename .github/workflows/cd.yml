@@ -42,12 +42,7 @@ jobs:
     - name: Create Yandex site ownership verification HTML file
       run: |
         cd ./lyrics-website-generator.git/www/
-        echo '<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>Verification: 9bc9cfa4ff89bbf7</body>
-</html>' > yandex_9bc9cfa4ff89bbf7.html
+        echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>Verification: 9bc9cfa4ff89bbf7</body></html>' > yandex_9bc9cfa4ff89bbf7.html
 
     - name: Overwrite and deploy website files
       run: |
