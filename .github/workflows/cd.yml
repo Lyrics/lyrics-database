@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Move latest database files under lyrics.git
+    - name: Move latest database files to be under lyrics.git
       run: mkdir lyrics.git && mv database lyrics.git
 
     - name: Clone lyrics-website-generator.git
@@ -34,21 +34,15 @@ jobs:
         pip3 install pystache
         make
 
-    - name: Create Google site ownership verification HTML file
-      run: |
-        cd ./lyrics-website-generator.git/www/
-        echo "google-site-verification: googlec8c6966ec9658f63.html" > googlec8c6966ec9658f63.html
-
-    - name: Create Yandex site ownership verification HTML file
-      run: |
-        cd ./lyrics-website-generator.git/www/
-        echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>Verification: 9bc9cfa4ff89bbf7</body></html>' > yandex_9bc9cfa4ff89bbf7.html
-
-    - name: Overwrite and deploy website files
+    - name: Generate updated website files
       run: |
         cd ./lyrics.github.io.git/
+        rm -rf docs
+        mv ../lyrics-website-generator.git/www docs
+
+    - name: Deploy updated website files
+      run: |
         git config user.name "Lyrics Admin"
         git config user.email "open.lyrics.database@gmail.com"
-        make clean
-        mv ../lyrics-website-generator.git/www/* .
-        make deploy
+        git commit -m "Update website content"
+        git push
