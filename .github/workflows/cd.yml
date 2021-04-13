@@ -46,5 +46,5 @@ jobs:
         git config user.name "Lyrics Admin"
         git config user.email "open.lyrics.database@gmail.com"
         git add docs
-        git commit -m "Update website content"
+        git commit -m "update website files"
         git push
