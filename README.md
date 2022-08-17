@@ -1,21 +1,16 @@
 # Lyrics
 
-Here you can read and add song lyrics.
+Many artists don’t have their lyrics available online in the correct form.  Open Lyrics Database was started in an attempt to resolve that issue through obtaining and publishing song texts by reaching out to the original authors.
 
 
 ### What this project is contributing to the world
 
- - **problem**: quality of lyrics on the Internet leaves something to be desired, often following the basic quantity over quality paradigm\
- **solution**: maintain lyrics database as an open source project, let people contribute texts to songs they love; reach out to original authors, kindly asking to share their lyrics with the world
-
- - **problem**: little motivation contributing to resources that may disappear\
- **solution**: to never lose the progress, make it possible for anyone to easily download the whole database
-
- - **problem**: lyrics websites are often unpleasant to view due to inaccessible design and large amount of ads\
- **solution**: create and launch a lightweight open-source lyrics website
-
- - **problem**: it's generally not easy to maintain quality control over large datasets\
- **solution**: perform automated checks prior accepting contributions to ensure overall database quality
+| Problem | Solution |
+|:--------|:---------|
+| Quality of lyrics on the Internet leaves something to be desired, often following the basic quantity over quality paradigm. | Maintain lyrics database as an open source project, let people contribute texts to songs they love; reach out to original authors, kindly asking to share their lyrics with the world. |
+| Little motivation contributing to resources that may disappear. | To never lose the progress, make it possible for anyone to easily download the whole database. |
+| Lyrics websites are often unpleasant to view due to inaccessible design and large amount of ads. | Create and launch a lightweight open-source lyrics website. |
+| It’s generally not easy to maintain quality control over large datasets. | Perform automated checks prior accepting contributions to ensure overall database quality. |
 
 
 ## References
@@ -27,7 +22,7 @@ Here you can read and add song lyrics.
 
 Materials provided here are intended for non-commercial educational use. By accessing the documents here you agree that these materials are for private, educational use only. Materials here are protected by copyright and are the property of their respective owners.
 
-If you believe that your work has been copied in a way that constitutes copyright infringement, or that your intellectual property rights have been otherwise violated, you should notify this project's maintainers of your infringement claim in accordance with the procedure below.
+If you believe that your work has been copied in a way that constitutes copyright infringement, or that your intellectual property rights have been otherwise violated, you should notify this project’s maintainers of your infringement claim in accordance with the procedure below.
 
 Maintainers of this project will process and investigate notices of alleged infringement and will take appropriate actions under the Digital Millennium Copyright Act ("DMCA") and other applicable intellectual property laws with respect to any alleged or actual infringement and take measures to prevent similar infringements from happening in the future. A notification of claimed copyright infringement should be emailed to open.lyrics.database@gmail.com (Subject line: "DMCA Takedown Request").
 
