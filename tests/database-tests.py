@@ -168,7 +168,7 @@ for moduleFilename in sorted(os.listdir(testModulesDirectory), key=str.lower):
         testModules[testName][testAttrName] = getattr(module, testAttrName)
         testCount += 1
 
-# 2. Read files into memory
+# 2. Read lyrics database structure and files into memory
 database = readDatabaseDirectory('../database')
 
 # 3. Run tests
@@ -201,12 +201,12 @@ for testModuleFilename in testModules:
         item = database[path]
         res = testModules[testModuleFilename][testName](path, item['b'], item['p'], item['l'], item['m'], database)
         if res == CODE_ERR:
-          print('Failed to pass ' + readableTestName + ' (error):', path, file=sys.stderr)
+          print('Failed to pass ' + readableTestName.lower() + ' (error):', path, file=sys.stderr)
           testErrorCount += 1
           errorCausingFiles[path] = 1
           okFiles.pop(path, None)
         elif res == CODE_WARN:
-          print('Failed to pass ' + readableTestName + ' (warning):', path, file=sys.stderr)
+          print('Failed to pass ' + readableTestName.lower() + ' (warning):', path, file=sys.stderr)
           testWarningCount += 1
           warningCausingFiles[path] = 1
           okFiles.pop(path, None)
