@@ -8,6 +8,7 @@ Here they are:
  - Jean Paul Hare of JK/47 [[bandcamp](https://jaykay47.bandcamp.com/)]
  - Sam HaiNe [[bandcamp](https://samhaine.bandcamp.com/)]
  - Slade Templeton of Crying Vessel [[bandcamp](https://cryingvessel.bandcamp.com/)]
+ - Alison Lewis of Zanias [[bandcamp](https://zanias.bandcamp.com/)]
 
 ---
 
