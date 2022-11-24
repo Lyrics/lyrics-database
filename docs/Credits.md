@@ -12,7 +12,8 @@ Here they are:
 
 ---
 
-The contents of this repository is the result of work performed by many people who willingly took their time to contribute to the project. They did so without being paid, sponsored, or compensated in any way.
+The contents of this repository is the result of work performed by many people who willingly took their time to contribute to the project.
+They did so without being paid, sponsored, or compensated in any other way.
 
 The best that can currently be done is to mention their names here:
  - Andy Alt @andy5995
