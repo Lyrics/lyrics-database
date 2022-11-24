@@ -1,14 +1,14 @@
 Special thanks go to artists who have kindly shared their texts or helped this project in any other way.
 
 Here they are:
- - Michael Arthur Holloway of Dead When I Found Her [[bandcamp](https://deadwhenifoundher.bandcamp.com/)]
- - The Last Internationale [[website](https://www.tlinyc.com/)]
- - Luc Van Acker [[website](http://www.lucvanacker.com/)]
- - Jae Matthews of Boy Harsher [[website](https://boyharsher.com/)]
- - Jean Paul Hare of JK/47 [[bandcamp](https://jaykay47.bandcamp.com/)]
- - Sam HaiNe [[bandcamp](https://samhaine.bandcamp.com/)]
- - Slade Templeton of Crying Vessel [[bandcamp](https://cryingvessel.bandcamp.com/)]
  - Alison Lewis of Zanias [[bandcamp](https://zanias.bandcamp.com/)]
+ - Slade Templeton of Crying Vessel [[bandcamp](https://cryingvessel.bandcamp.com/)]
+ - Sam HaiNe [[bandcamp](https://samhaine.bandcamp.com/)]
+ - Jean Paul Hare of JK/47 [[bandcamp](https://jaykay47.bandcamp.com/)]
+ - Jae Matthews of Boy Harsher [[website](https://boyharsher.com/)]
+ - Luc Van Acker [[website](http://www.lucvanacker.com/)]
+ - The Last Internationale [[website](https://www.tlinyc.com/)]
+ - Michael Arthur Holloway of Dead When I Found Her [[bandcamp](https://deadwhenifoundher.bandcamp.com/)]
 
 ---
 
