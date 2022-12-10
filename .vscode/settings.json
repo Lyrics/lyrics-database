@@ -1,5 +1,11 @@
 {
     "editor.wrappingIndent": "none",
-    "editor.quickSuggestions": false,
-    "editor.autoClosingBrackets": false
+    "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+    },
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never"
 }
