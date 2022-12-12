@@ -33,7 +33,7 @@ def formatStatsLine(key, value):
   return '{:·<53}{}'.format(key, value)
 
 def splitLyricsIntoTextAndMetadata(lyricsFileContents):
-  return re.split('_+', lyricsFileContents)
+  return re.split('(?m)^_+$', lyricsFileContents)
 
 def getText(lyricsFileContents):
   partials = splitLyricsIntoTextAndMetadata(lyricsFileContents)
