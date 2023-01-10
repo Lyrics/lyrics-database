@@ -1,6 +1,8 @@
 Special thanks go to artists who have kindly shared their texts or helped this project in any other way.
 
 Here they are:
+ - Deep Cut [[bandcamp](https://thedeepcut.bandcamp.com/)]
+ - Cole Coonce of Braindead Sound Machine
  - Alison Lewis of Zanias [[bandcamp](https://zanias.bandcamp.com/)]
  - Slade Templeton of Crying Vessel [[bandcamp](https://cryingvessel.bandcamp.com/)]
  - Sam HaiNe [[bandcamp](https://samhaine.bandcamp.com/)]
