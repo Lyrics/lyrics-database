@@ -24,6 +24,7 @@ def testForNoSpacesWithinFileDirNames(path, bytes, plaintext, lyrics, metadata, 
 
 def testForProperFirstSymbolInArtistDirectoryName(path, bytes, plaintext, lyrics, metadata, database):
   parts = path.split('/')
+  # TODO: ideally we should check Katakana to Hiragana conversion here instead of skipping the test, but that's not high priority at the moment
   hiraganaCharacters = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっきゃきゅきょしゃしゅしょちゃちゅちょにゃにゅにょひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ"
   if not parts[0] in hiraganaCharacters: # We omit this test for artist group directory names that use Hiragana characters
     if not parts[1].startswith(parts[0]):
