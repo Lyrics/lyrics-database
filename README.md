@@ -1,4 +1,4 @@
-# Lyrics
+# Open Lyrics Database
 
 Many artists don’t have their lyrics available online in the correct form.  Open Lyrics Database was started in an attempt to resolve that issue through obtaining and publishing song texts by reaching out to the original authors.
 
