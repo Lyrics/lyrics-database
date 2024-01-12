@@ -81,6 +81,7 @@ def testForProperMetadataLanguageValues(path, bytes, plaintext, lyrics, metadata
     "Unknown",
     "American English",
     "Australian English",
+    "Basque",
     "British English",
     "Canadian English",
     "Dutch",
