@@ -93,6 +93,7 @@ def testForProperMetadataLanguageValues(path, bytes, plaintext, lyrics, metadata
     "New Zealand English",
     "Portuguese",
     "Scottish English",
+    "Spanish",
   ]
   if "Language" in keys:
     for language in metadata['Language']:
