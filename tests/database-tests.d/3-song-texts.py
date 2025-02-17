@@ -18,7 +18,7 @@ def testForSmartQuotes(path, bytes, plaintext, lyrics, metadata, database):
 
 def testForNoWideGaps(path, bytes, plaintext, lyrics, metadata, database):
   if '\n\n\n' in lyrics:
-    return CODE_WARN
+    return CODE_ERR
   return CODE_OK
 
 def testForProperEllipses(path, bytes, plaintext, lyrics, metadata, database):
@@ -37,7 +37,7 @@ def testForTests(*_):
     return passing and failing
   def testTheTestForNoWideGaps():
     passing = testForNoWideGaps('', b'', '', 'La la la\n\nLa la\n\nLa\n', {}, {}) == CODE_OK
-    failing = testForNoWideGaps('', b'', '', "\"La la la\n\n\nLa la\"", {}, {}) == CODE_WARN
+    failing = testForNoWideGaps('', b'', '', "\"La la la\n\n\nLa la\"", {}, {}) == CODE_ERR
     return passing and failing
   def testTheTestForProperEllipses():
     passing = testForProperEllipses('', b'', '', 'La la la\nLa la\nLa…\n', {}, {}) == CODE_OK
