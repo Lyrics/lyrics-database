@@ -70,10 +70,10 @@ def parseMetadata(metadata):
       datalines.append(line)
   dictionary = {}
   for dataline in datalines:
-    partials = re.split('\s{2,}', dataline)
+    partials = re.split(' {2,}', dataline)
     key = partials[0]
     rawvalue = dataline[len(key):].strip()
-    valuepartials = re.split(',\s{2,}', rawvalue)
+    valuepartials = re.split(', {2,}', rawvalue)
     dictionary[key] = valuepartials
   return dictionary
 
