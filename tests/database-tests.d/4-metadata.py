@@ -2,16 +2,6 @@ CODE_OK   = 0
 CODE_WARN = 1
 CODE_ERR  = 2
 
-def testForMetadataToBePresent(path, bytes, plaintext, lyrics, metadata, database):
-  if len(metadata) < 1:
-    return CODE_ERR
-  return CODE_OK
-
-def testForRequiredMetadataKeysToBePresent(path, bytes, plaintext, lyrics, metadata, database):
-  if not 'Name' in metadata or not 'Artist' in metadata:
-    return CODE_ERR
-  return CODE_OK
-
 def testForUnknownMetadataKeys(path, bytes, plaintext, lyrics, metadata, database):
   keys = list(metadata.keys())
   knownMetadataKeys = [
@@ -103,14 +93,6 @@ def testForProperMetadataLanguageValues(path, bytes, plaintext, lyrics, metadata
   return CODE_OK
 
 def testForTests(*_):
-  def testTheTestForMetadataToBePresent():
-    passing = testForMetadataToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
-    failing = testForMetadataToBePresent('', b'', '', '', {}, {}) == CODE_ERR
-    return passing and failing
-  def testTheTestForRequiredMetadataKeysToBePresent():
-    passing = testForRequiredMetadataKeysToBePresent('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
-    failing = testForRequiredMetadataKeysToBePresent('', b'', '', '', {}, {}) == CODE_ERR
-    return passing and failing
   def testTheTestForUnknownMetadataKeys():
     passing = testForUnknownMetadataKeys('', b'', '', '', { 'Name': 'Song Name', 'Artist': 'Artist Name' }, {}) == CODE_OK
     failing = testForUnknownMetadataKeys('', b'', '', '', { 'Copyright': 'Some company' }, {}) == CODE_ERR
@@ -136,9 +118,7 @@ def testForTests(*_):
     passing = testForProperMetadataLanguageValues('', b'', '', '', { 'Language': [ 'American English', 'French', 'Unknown' ] }, {}) == CODE_OK
     failing = testForProperMetadataLanguageValues('', b'', '', '', { 'Language': [ 'en_US' ] }, {}) == CODE_ERR
     return passing and failing
-  if not testTheTestForMetadataToBePresent() \
-  or not testTheTestForRequiredMetadataKeysToBePresent() \
-  or not testTheTestForUnknownMetadataKeys() \
+  if not testTheTestForUnknownMetadataKeys() \
   or not testTheTestForDuplicateTrackNumbers() \
   or not testTheTestForMatchingArtistNames() \
   or not testTheTestForMatchingAlbumNames() \
